@@ -1,0 +1,32 @@
+﻿@page
+@model ToDoListApp.Pages.CompletedTasksModel
+@using ToDoList.Common.Db
+@{
+}
+<div id="tasks-list">
+    <div>
+        <h2>Completed tasks</h2>
+    </div>
+    <div>
+        @if(Model.Tasks is not null)
+        {
+            <div> 
+            <ul>
+                @foreach(TaskEntity task in Model.Tasks)
+                {
+                    <li time datetime="YYYY-MM-DD">
+                        <div>
+                            Name: @task.TaskName, Description: @task.Description, Priority: @task.Priority,
+                            DueDate: @task.DueDate.Value.ToLongDateString()
+                        </div>
+                        <form asp-page-handler="Remove" method="post">
+                            <button class="btn btn-default">Remove</button>
+                            <input type="hidden" name="id" value="@task.TaskId" /> 
+                        </form>
+                    </li>
+                }
+            </ul>
+            </div>
+        }
+    </div>
+</div>

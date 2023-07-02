@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ToDoListApp</title>
+    @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ToDoListApp.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/layout_header.css" />*@
+    <link rel="stylesheet" href="~/css/layout.css" asp-append-version="true">
+</head>
+<body>
+    <div id="ToDoList_app">
+        <div id="page_background">
+
+            <div id="top-bar">
+                <div id="top-bar-inner">
+                        <div id="left-controls">
+                                <ul>
+                                    <li>
+                                        <a asp-page="index">
+                                            <img src="~/images/icons/home-outline.svg" width="28" height="28"/>
+                                        </a>
+                                    </li>
+                                </ul>
+                        </div>
+                        <div id="right-controls">
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <img src="~/images/icons/person-outline.svg" width="28" height="28"/>
+                                        </a>
+                                    </li>
+                                </ul>
+                        </div>
+                </div>
+            </div>
+
+            <div id="main-part">
+
+                <div id="left-bar">
+                    <div id="left-bar-inner">
+                        <ul id="left-menu">
+
+                            <li id="add">
+                                <div id="left-bar-list-item">
+                                    <a asp-page="Add">
+                                        <span class="icon">
+                                            <img src="~/images/icons/add-outline.svg"  width="24" height="24"/>
+                                        </span>
+                                        <span class="text">
+                                            Add task
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                            <li id="today">
+                                <div id="left-bar-list-item">
+                                    <a asp-page="index">
+                                        <span class="icon">
+                                            <img src="~/images/icons/menu-outline.svg" width="24" height="24"/>
+                                        </span>
+                                        <span class="text">
+                                            Today
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                            <li id="upcoming">
+                                <div id="left-bar-list-item">
+                                    <a asp-page="UpcomingTasks">
+                                        <span class="icon">
+                                            <img src="~/images/icons/arrow-up-outline.svg" width="24" height="24"/>
+                                        </span>
+                                        <span class="text">
+                                            Upcoming
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                            <li id="completed">
+                                <div id="left-bar-list-item">
+                                    <a asp-page="completedTasks">
+                                        <span class="icon">
+                                            <img src="~/images/icons/checkmark-done-outline.svg" width="24" height="24"/>
+                                        </span>
+                                        <span class="text">
+                                            Completed
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            
+                <div class="container">
+                    <main role="main" class="pb-3">
+                        @RenderBody()
+                    </main>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

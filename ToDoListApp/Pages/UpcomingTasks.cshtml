@@ -1,0 +1,30 @@
+﻿@page
+@model ToDoListApp.Pages.UpcomingTasksModel
+@using ToDoList.Common.Db
+@{
+}
+<div id="tasks-list">
+    <div>
+        @if(Model.UpcomingTasks is not null)
+        {
+            <div><h2>Upcoming tasks</h2></div>
+            <div> 
+            <ul>
+                @foreach(TaskEntity task in Model.UpcomingTasks)
+                {
+                    <li time datetime="YYYY-MM-DD">
+                        <div>
+                            Name: @task.TaskName, Description: @task.Description, Priority: @task.Priority,
+                            DueDate: @task.DueDate.Value.ToLongDateString()
+                        </div>
+                        <form asp-page-handler="Remove" method="post">
+                            <button class="btn btn-default">Remove</button>
+                            <input type="hidden" name="id" value="@task.TaskId" /> 
+                        </form>
+                    </li>
+                }
+            </ul>
+            </div>
+        }
+    </div>
+</div>

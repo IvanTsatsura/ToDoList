@@ -1,0 +1,21 @@
+﻿@page
+@model ToDoListApp.Pages.AddModel
+@using ToDoList.Common.Db
+@{
+}
+<div id="add-task-form">
+        <p>Add new task: </p>
+        <form asp-page-handler="Add" method="post">
+            <div><input asp-for ="TaskToAdd.TaskName"
+                placeholder="Task name"/></div>
+            <div><input asp-for ="TaskToAdd.Description"
+                placeholder="Description"/></div>
+            <div>
+                <select asp-for="TaskToAdd.Priority" asp-items="Html.GetEnumSelectList<Priority>()"></select>
+            </div>
+            <div><input asp-for ="TaskToAdd.DueDate"
+                placeholder="Due date" value="@DateTime.UtcNow.Date"/>
+            </div>
+                <input type="submit" />
+        </form>
+</div>

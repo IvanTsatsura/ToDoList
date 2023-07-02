@@ -1,0 +1,90 @@
+﻿@page
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using ToDoList.Common.Db
+@model IndexModel
+@*@{
+    ViewData["Title"] = "Home page";
+}*@
+<div id="tasks-list">
+    <div>
+        @if (Model.Tasks is not null)
+        {
+            <div><h2>Overdue:</h2></div>
+            <div id="main-overdue-tasks-list"> 
+            <ul>
+                @foreach(TaskEntity task in Model.OverdueTasks)
+                {
+                    <li time datetime="YYYY-MM-DD">
+                        <div>
+                            Name: @task.TaskName, Description: @task.Description,
+                            Priority: @task.Priority, DueDate: @task.DueDate.Value.ToLongDateString()
+                        </div>
+
+                        <div class="list-buttons">
+                            <div>
+                                <form asp-page-handler="Done" method="post">
+                                    <button class="btn btn-default">Done</button>
+                                    <input type="hidden" name="id" value=@task.TaskId />
+                                </form>
+                            </div>
+
+                            <div>
+                                <form asp-page-handler="Edit" method="post">
+                                    <button class="btn btn-default">Edit</button>
+                                    <input type="hidden" name="id" value=@task.TaskId />
+                                </form>
+                            </div>
+
+                            <div>
+                                <form asp-page-handler="Delete" method="post">
+                                    <button class="btn btn-default">delete</button>
+                                    <input type="hidden" name="id" value=@task.TaskId />
+                                </form>
+                            </div>
+                        </div>
+                    </li>
+                }
+                </ul>
+            </div> 
+
+            <div><h2>Today tasks:</h2></div>
+            <div id="main-tasks-list"> 
+            <ul>
+                @foreach(TaskEntity task in Model.Tasks)
+                {
+                    <li time datetime="YYYY-MM-DD">
+                        <div>
+                            Name: @task.TaskName, Description: @task.Description,
+                            Priority: @task.Priority, DueDate: @task.DueDate.Value.ToLongDateString()
+                        </div>
+
+                        <div class="list-buttons">
+                            <div>
+                                <form asp-page-handler="Done" method="post">
+                                    <button class="btn btn-default">Done</button>
+                                    <input type="hidden" name="id" value=@task.TaskId />
+                                </form>
+                            </div>
+
+                            <div>
+                                <form asp-page-handler="Edit" method="post">
+                                    <button class="btn btn-default">Edit</button>
+                                    <input type="hidden" name="id" value=@task.TaskId />
+                                </form>
+                            </div>
+
+                            <div>
+                                <form asp-page-handler="Delete" method="post">
+                                    <button class="btn btn-default">delete</button>
+                                    <input type="hidden" name="id" value=@task.TaskId />
+                                </form>
+                            </div>
+                        </div>
+                    </li>
+                }
+                </ul>
+            </div> 
+        }
+
+    </div>
+</div>

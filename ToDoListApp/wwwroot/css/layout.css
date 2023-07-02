@@ -1,0 +1,113 @@
+﻿:root {
+    --topBarClr: #e69440 /*#db4c3f*/;
+    --leftBarClr: #fafafa;
+    --leftBarHoverItemClr: #eeeeee;
+    --textClr: #080402;
+    --addIconClr: #fbf153;
+    --todayIconClr: #3977b9;
+    --complTasksIconClr: #5db074;
+    --upcomingIconClr: #9167d2;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#top-bar {
+    display: flex;
+    background-color: var(--topBarClr);
+    height: 44px;
+}
+ul {
+    list-style-type: none;
+}
+#top-bar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0px 10px;
+}
+#main-part {
+    display: flex;
+    flex-direction: row;
+}
+#left-bar {
+    display: flex;
+    justify-content: /*flex-start*/ center;
+    width: 200px;
+    height: 100vh;
+    background-color: var(--leftBarClr);
+}
+.pb-3{
+    display: flex;
+    justify-content: center;
+    padding: 25px;
+    width: 100%;
+}
+#left-bar-inner{
+    display: flex;
+    padding: 15px 0px;
+}
+#left-bar-list-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+}
+#left-bar-list-item:hover {
+    background-color: var(--leftBarHoverItemClr);
+}
+#left-bar-list-item a{
+    text-decoration: none;
+    width: 100%;
+}
+#left-bar-list-item a:link, a:visited {
+    text-decoration: none;
+}
+#left-bar-list-item .icon{    
+    vertical-align: middle;
+}
+#left-bar-list-item .text {
+    color: var(--textClr);
+    position: relative;
+    top: -2.2px;
+    vertical-align: middle;
+}
+#add:hover .icon {
+    /*filter: invert(93%) sepia(68%) saturate(895%) hue-rotate(323deg) brightness(112%) contrast(103%);*/
+    filter: invert(34%) sepia(65%) saturate(1590%) hue-rotate(336deg) brightness(93%) contrast(84%);
+}
+#today:hover .icon {
+    filter: invert(43%) sepia(77%) saturate(467%) hue-rotate(170deg) brightness(85%) contrast(89%);
+}
+#upcoming:hover .icon {
+    filter: invert(65%) sepia(100%) saturate(4101%) hue-rotate(230deg) brightness(89%) contrast(82%);
+}
+#completed:hover .icon {
+    filter: invert(74%) sepia(7%) saturate(2811%) hue-rotate(84deg) brightness(84%) contrast(76%);
+}
+#tasks-list{
+    width:80%;
+}
+#tasks-list li {
+    display: flex;
+    justify-content: space-between;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+}
+#main-tasks-list .list-buttons{
+    display: flex;
+    align-items: center;
+}
+#main-overdue-tasks-list .list-buttons {
+    display: flex;
+    align-items: center;
+}
+#add-task-form{
+    /*transform: scale(1.5);*/
+}

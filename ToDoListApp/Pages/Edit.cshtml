@@ -1,0 +1,36 @@
+﻿@page
+@using ToDoList.Common.Db;
+@model ToDoListApp.Pages.EditModel
+@{
+}
+<h1>Edit page</h1>
+<div>
+    @if (Model.TaskToEdit is not null)
+    {
+        <form typeof="hidden" asp-page-handler="Edit" method="post">
+            <div>
+                <input asp-for="EditedTask.TaskId" placeholder="@Model.TaskToEdit.TaskId" 
+                value="@Model.TaskToEdit.TaskId"/>
+            </div>
+            <div>
+                <input asp-for="EditedTask.TaskName" placeholder="@Model.TaskToEdit.TaskName" 
+                value="@Model.TaskToEdit.TaskName"/>
+            </div>
+            <div>
+                <input asp-for="EditedTask.Description" placeholder="@Model.TaskToEdit.Description" 
+                value="@Model.TaskToEdit.Description"/>
+            </div>
+            <div>
+                <select asp-for="EditedTask.Priority" asp-items="Html.GetEnumSelectList<Priority>()">
+                    <option disabled selected>@Model.TaskToEdit.Priority</option>
+                </select>
+            </div>
+            <div>
+                <input asp-for="EditedTask.DueDate" type="date" placeholder="@Model.TaskToEdit.DueDate"
+                value="@DateTime.UtcNow.Date"/>
+            </div>
+            <input type="submit" />
+        </form>
+    }
+    
+</div>
