@@ -5,16 +5,62 @@
 }
 <div id="tasks-list">
     <div>
-        <h2>Completed tasks</h2>
-    </div>
-    <div>
-        @if(Model.Tasks is not null)
+        @if(Model.Tasks is not null && Model.Tasks.Count() > 0)
         {
+            <div class="list-title"><h2>Completed tasks</h2></div>
+
             <div> 
             <ul>
                 @foreach(TaskEntity task in Model.Tasks)
                 {
                     <li time datetime="YYYY-MM-DD">
+                            <div class="task">
+                                <div class="name-and-priority">
+                                    @if(task.Priority.Value.Equals(Priority.High))
+                                    {
+                                        <div class="high-priority">
+                                            <img src="~/images/icons/radio-button-on-outline.svg" width="14" height="14" />
+                                        </div>
+                                    }
+                                    else if (task.Priority.Value.Equals(Priority.Medium))
+                                    {
+                                        <div class="medium-priority">
+                                            <img src="~/images/icons/radio-button-on-outline.svg" width="14" height="14" />
+                                        </div>
+                                    }
+                                    else if (task.Priority.Value.Equals(Priority.Low))
+                                    {
+                                        <div class="low-priority">
+                                            <img src="~/images/icons/radio-button-on-outline.svg" width="14" height="14" />
+                                        </div>
+                                    }
+                                    <div class="task-name">
+                                        @task.TaskName
+                                    </div>
+                                </div>
+                                @if (task.Description is not null)
+                                {
+                                    <div class="task-description">
+                                        @task.Description;
+                                    </div>
+                                }
+                            </div>
+
+                        <div class="list-buttons">
+                                <div class="task-duedate">
+                                    @task.DueDate.Value.ToLongDateString()
+                                </div>
+                            <div class="list-buttons-inner">
+                                <div class="list-btn">
+                                    <form asp-page-handler="Remove" method="post">
+                                        <button class="btn btn-default" id="delete-button">Remove</button>
+                                        <input type="hidden" name="id" value=@task.TaskId />
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    @*<li time datetime="YYYY-MM-DD">
                         <div>
                             Name: @task.TaskName, Description: @task.Description, Priority: @task.Priority,
                             DueDate: @task.DueDate.Value.ToLongDateString()
@@ -23,7 +69,7 @@
                             <button class="btn btn-default">Remove</button>
                             <input type="hidden" name="id" value="@task.TaskId" /> 
                         </form>
-                    </li>
+                    </li>*@
                 }
             </ul>
             </div>

@@ -45,6 +45,10 @@ namespace ToDoListApp.Pages
 
             if (EditedTask != null)
             {
+                if (EditedTask.Priority is null)
+                    EditedTask.Priority = 0;
+                if (EditedTask.DueDate is null)
+                    EditedTask.DueDate = DateTime.UtcNow.Date;
                 _db.Tasks.Attach(EditedTask).State = EntityState.Modified;
             }
 

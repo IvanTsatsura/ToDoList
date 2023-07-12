@@ -1,12 +1,13 @@
 ﻿:root {
     --topBarClr: #e69440 /*#db4c3f*/;
-    --leftBarClr: #fafafa;
-    --leftBarHoverItemClr: #eeeeee;
+    --leftBarClr: /*#fafafa*/ #eeeeee;
+    --leftBarHoverItemClr: /*#eeeeee*/ #d1cfcd;
     --textClr: #080402;
     --addIconClr: #fbf153;
     --todayIconClr: #3977b9;
     --complTasksIconClr: #5db074;
     --upcomingIconClr: #9167d2;
+    --listBottomBorderClr: #8d6c63 /*#e69440*/;
 }
 *{
     margin: 0;
@@ -45,15 +46,16 @@ ul {
     padding: 25px;
     width: 100%;
 }
-#left-bar-inner{
+#left-bar-inner {
     display: flex;
-    padding: 15px 0px;
+    margin: 15px 15px 0px 0px;
+    /*padding: 15px 15px 0px 0px;*/
 }
 #left-bar-list-item{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px 10px;
+    padding: 5px 0px 0px 0px;
 }
 #left-bar-list-item:hover {
     background-color: var(--leftBarHoverItemClr);
@@ -92,7 +94,14 @@ ul {
 }
 #tasks-list li {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    border-bottom: solid;
+    border-bottom-color: var(--listBottomBorderClr);
+    margin: 0px 0px 10px 0px;
+    /*justify-content: space-between;*/
+}
+#tasks-list li:hover {
+    background-color: var(--leftBarClr);
 }
 .container{
     display: flex;
@@ -100,14 +109,68 @@ ul {
     width: 100%;
     align-items: flex-start;
 }
-#main-tasks-list .list-buttons{
+#tasks-list .list-buttons {
     display: flex;
-    align-items: center;
+    position: relative;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin: 5px;
 }
-#main-overdue-tasks-list .list-buttons {
+#tasks-list .list-buttons-inner {
     display: flex;
-    align-items: center;
 }
-#add-task-form{
-    /*transform: scale(1.5);*/
+.list-title {
+    border-top: solid;
+    border-bottom: solid;
+    border-color: var(--topBarClr);
+    margin: 0px 0px 15px 0px;
+}
+.list-btn{
+    margin: 0px 5px;
+}
+.btn.btn-default {
+    height: 3vh;
+    width: 55px
+}
+#done-button {
+    /*border-color: green;*/
+}
+#done-button:hover {
+    border-color: green;
+    color: green;
+}
+#edit-button {
+    /*border-color: blue;*/
+}
+#edit-button:hover {
+    border-color: blue;
+    color: blue;
+}
+#delete-button {
+    /*border-color: red;*/
+}
+#delete-button:hover {
+    border-color: red;
+    color: red;
+}
+.name-and-priority{
+    display: flex;
+}
+.name-and-priority img {
+    height: 2.5vh;
+}
+.low-priority {
+    filter: invert(46%) sepia(99%) saturate(2941%) hue-rotate(201deg) brightness(90%) contrast(96%);
+}
+.medium-priority {
+    filter: invert(29%) sepia(11%) saturate(5528%) hue-rotate(243deg) brightness(92%) contrast(92%);
+}
+.high-priority {
+    filter: invert(18%) sepia(88%) saturate(3252%) hue-rotate(346deg) brightness(89%) contrast(95%);
+}
+.task-duedate{
+    display: flex;
+    position: relative;
+    left: -20px;
+    top: -2px;
 }

@@ -22,20 +22,21 @@ namespace ToDoListApp.Pages
 
         public void OnGet()
         {
-            foreach(TaskEntity task in _db.Tasks)
+            /*foreach(TaskEntity task in _db.Tasks)
             {
-                if (task.DueDate < DateTime.UtcNow)
+                if (!task.IsOverdue && task.DueDate.Value.Date < DateTime.Now.Date)
                 {
                     task.IsOverdue = true;
                     _db.Tasks.Attach(task).State = EntityState.Modified;
                 }
-            }
+            }*/
 
             Tasks = _db.Tasks
-                .Where(t => t.IsCompleted == false && t.DueDate == DateTime.Today)
+                .Where(t => t.IsCompleted == false && t.DueDate.Value.Date == DateTime.Today.Date)
                 .OrderByDescending(t => t.Priority);
 
             OverdueTasks = _db.Tasks
+                .Where(t => t.IsCompleted == false && t.DueDate.Value.Date < DateTime.Today.Date)
                 .OrderBy(t => t.DueDate)
                 .ThenBy(t => t.Priority);
         }
