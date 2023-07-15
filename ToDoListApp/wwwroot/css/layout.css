@@ -163,7 +163,8 @@ ul {
     filter: invert(46%) sepia(99%) saturate(2941%) hue-rotate(201deg) brightness(90%) contrast(96%);
 }
 .medium-priority {
-    filter: invert(29%) sepia(11%) saturate(5528%) hue-rotate(243deg) brightness(92%) contrast(92%);
+    /*filter: invert(29%) sepia(11%) saturate(5528%) hue-rotate(243deg) brightness(92%) contrast(92%);*/
+    filter: invert(57%) sepia(22%) saturate(3609%) hue-rotate(2deg) brightness(99%) contrast(90%);
 }
 .high-priority {
     filter: invert(18%) sepia(88%) saturate(3252%) hue-rotate(346deg) brightness(89%) contrast(95%);
